@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-10-16T10:49:33 CEST" name="Surefire suite" finished-at="2023-10-16T10:49:33 CEST" duration-ms="612">
+    <groups>
+    </groups>
+    <test started-at="2023-10-16T10:49:33 CEST" name="Surefire test" finished-at="2023-10-16T10:49:33 CEST" duration-ms="612">
+      <class name="ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUpClass" finished-at="2023-10-16T10:49:33 CEST" duration-ms="15" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testAddFoodToShoppingCart()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testAddFoodToShoppingCart" finished-at="2023-10-16T10:49:33 CEST" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddFoodToShoppingCart -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method signature="testArithmeticException()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testArithmeticException" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <exception class="java.lang.ArithmeticException">
+            <message>
+              <![CDATA[/ by zero]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.ArithmeticException: / by zero
+at ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest.testArithmeticException(FoodControllerTest.java:152)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.ArithmeticException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testArithmeticException -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method signature="testClassCastException()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testClassCastException" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <exception class="java.lang.ClassCastException">
+            <message>
+              <![CDATA[class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+at ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest.testClassCastException(FoodControllerTest.java:145)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.ClassCastException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testClassCastException -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testIndexOutOfBoundsException()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testIndexOutOfBoundsException" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <exception class="java.lang.IndexOutOfBoundsException">
+            <message>
+              <![CDATA[Index 100 out of bounds for length 8]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IndexOutOfBoundsException: Index 100 out of bounds for length 8
+at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+at java.base/java.util.Objects.checkIndex(Objects.java:359)
+at java.base/java.util.ArrayList.get(ArrayList.java:427)
+at ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest.testIndexOutOfBoundsException(FoodControllerTest.java:58)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IndexOutOfBoundsException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testIndexOutOfBoundsException -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method signature="testNumberFormatException()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testNumberFormatException" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <exception class="java.lang.NumberFormatException">
+            <message>
+              <![CDATA[Cannot parse null string]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NumberFormatException: Cannot parse null string
+at java.base/java.lang.Integer.parseInt(Integer.java:630)
+at java.base/java.lang.Integer.parseInt(Integer.java:786)
+at ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest.testNumberFormatException(FoodControllerTest.java:138)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NumberFormatException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNumberFormatException -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testRemoveFoodFromShoppingCart()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testRemoveFoodFromShoppingCart" finished-at="2023-10-16T10:49:33 CEST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRemoveFoodFromShoppingCart -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="setUp" finished-at="2023-10-16T10:49:33 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testTimeOut()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="testTimeOut" finished-at="2023-10-16T10:49:33 CEST" duration-ms="509" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTimeOut -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDown" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest@6a396c1e]" started-at="2023-10-16T10:49:33 CEST" name="tearDownClass" finished-at="2023-10-16T10:49:33 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- ch.unil.doplab.grocerystorewebsite.v1.tests.FoodControllerTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
