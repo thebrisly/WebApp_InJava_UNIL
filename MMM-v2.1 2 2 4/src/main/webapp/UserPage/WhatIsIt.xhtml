@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Welcome to MonthlyMoney Manager!</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                background: linear-gradient(to right, #141e30, #243b55);
+                color: #fff;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column; /* Changez la direction du flex pour être en colonne */
+                align-items: center;
+                justify-content: flex-start; /* Alignez le contenu en haut */
+                height: 100vh;
+                overflow: auto; /* Ajoutez un défilement si le contenu est plus long que la fenêtre */
+            }
+            .container {
+                width: 50%;
+                max-width: 600px; /* Vous pouvez ajouter une largeur maximale si nécessaire */
+                background-color: rgba(255, 255, 255, 0.95);
+                border-radius: 10px;
+                padding: 50px;
+                margin-top: 20px; /* Ajoutez une marge en haut pour assurer l'espace */
+                margin-bottom: 20px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            }
+            
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #007bff;
+                font-weight: bold;
+            }
+            .sub-header {
+                font-size: 24px;
+                margin-bottom: 30px;
+                color: #495057;
+            }
+            .section {
+                text-align: left;
+                margin-top: 30px;
+            }
+            .section-header {
+                font-size: 22px;
+                color: #007bff;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            .section-content {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #495057;
+            }
+            .italic-text {
+                font-style: italic;
+                font-size: 20px;
+                color: #6c757d;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+            .return-button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 15px 30px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            .return-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1 class="header">Welcome to MonthlyMoney Manager!</h1>
+            <p class="sub-header">Your personal financial assistant for effortless budget management.</p>
+
+            <div class="section">
+                <h2 class="section-header">Getting Started</h2>
+                <p class="section-content">Input your monthly income and expenses to get a clear picture of your financial standing.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Analysis</h2>
+                <p class="section-content">Access detailed graphs and breakdowns to understand your spending habits.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Goals</h2>
+                <p class="section-content">Define and track your financial objectives, staying motivated and on the right path.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Monthly Breakdowns</h2>
+                <p class="section-content">Dive deep into your month-by-month financial habits to make informed decisions.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Customization and Support</h2>
+                <p class="section-content">Tailor the app settings to your preference and access our help and support anytime you need.</p>
+            </div>
+
+            <p class="italic-text">Take control of your finances today with MonthlyMoney Manager!</p>
+
+            <h:form>
+                <h:commandButton styleClass="return-button" value="Return to Main Page" action="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+            </h:form>
+        </div>
+    </h:body>
+</html>

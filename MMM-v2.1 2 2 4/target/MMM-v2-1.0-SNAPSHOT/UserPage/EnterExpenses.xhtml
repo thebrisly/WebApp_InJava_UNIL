@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Enter Operations</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #000;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .header {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #007bff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #000;
+            text-align: center;
+        }
+
+        .command-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .command-button:hover {
+            background-color: #0056b3;
+        }
+
+        .operations-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .operations-table th, .operations-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            color: #000;
+        }
+
+        .operations-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .no-operations-message {
+            color: #000;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1 class="header">Enter Operations</h1>
+
+                <h:outputLabel value="Select Category: " for="selectedCategory" />
+                <h:selectOneMenu id="selectedCategory" value="#{operationBean.selectedCategory}" styleClass="input-field">
+                    <f:selectItems value="#{operationBean.getCategories()}" var="category" itemLabel="#{category.name}" itemValue="#{category.name}" />
+                </h:selectOneMenu>
+
+
+                <h:outputLabel value="Enter Amount: " for="expenseAmount" />
+                <h:inputText id="expenseAmount" value="#{operationBean.expenseAmount}" styleClass="input-field" />
+
+                <h:commandButton value="Add Operation" action="#{loginBean.getUserLoggedIn().addOperation(operationBean.selectedCategory, operationBean.expenseAmount)}" styleClass="command-button" />
+
+                <!-- Display user's operations -->
+                <h:dataTable value="#{loginBean.getUserLoggedIn().getOperations()}" var="operation" styleClass="operations-table"
+                    rendered="#{not empty loginBean.getUserLoggedIn().getOperations()}">
+                    <h:column>
+                        <f:facet name="header">Category</f:facet>
+                        #{operation.category}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Amount</f:facet>
+                        #{operation.amount}
+                    </h:column>
+                </h:dataTable>
+
+
+                <!-- Message if no operations -->
+                <h:outputText value="No operations available." styleClass="no-operations-message"
+                            rendered="#{empty loginBean.getUserLoggedIn().getOperations()}" />
+
+                <!-- Go Back to Main Menu Button -->
+                <h:commandButton styleClass="command-button" value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>

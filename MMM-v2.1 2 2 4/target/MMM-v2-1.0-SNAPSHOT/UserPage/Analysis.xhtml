@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Analysis</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #001f3f;
+                color: #fff;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .welcome-text {
+                font-size: 36px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .current-balance {
+                font-size: 24px;
+                margin-top: 10px;
+                text-align: center;
+                color: #fff; /* Blanc */
+            }
+
+            .current-balance.negative {
+                color: #ff0000; /* Rouge si négatif */
+            }
+
+            .buttons-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+                align-items: center;
+            }
+
+            .command-button {
+                font-size: 20px;
+                background-color: #87CEEB; /* Bleu clair */
+                color: #001f3f;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .command-button:hover {
+                background-color: #001f3f;
+                color: #fff;
+            }
+
+            .logout-button {
+                position: fixed; 
+                bottom: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #87CEEB; /* Bleu clair */
+                color: #001f3f;
+                border: none;
+                padding: 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+            
+            .operations-table {
+                width: 100%;
+                margin-top: 20px;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                overflow: hidden;
+                max-width: 100%;
+                overflow-x: auto;
+                background-color: #f8f9fa; /* Gris clair */
+            }
+
+            .operations-table th, .operations-table td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: center;
+            }
+
+            .operations-table th {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+            .category-name, .category-amount, .category-expenses, .category-difference {
+                padding: 12px;
+                text-align: center;
+            }
+
+            .category-name {
+                font-weight: bold;
+            }
+
+            .category-difference-container {
+                background-color: #D3D3D3; /* Bleu clair */
+                color: #001f3f; /* Bleu foncé */
+                padding: 20px;
+                text-align: center;
+                margin-top: 20px;
+                border-radius: 8px;
+            }
+
+            .category-difference.positive {
+                color: #0E8331;
+            }
+
+            .category-difference.negative {
+                color: #9C0E23;
+            }
+            
+            .progress-container {
+                width: 100%;
+                height: 20px;
+                background-color: #eee;
+                border-radius: 8px;
+                margin-top: 20px; /* Ajustez la marge comme souhaité */
+            }
+
+            .progress-bar {
+                height: 100%;
+                border-radius: 8px;
+                background-color: #00FF00; /* Couleur de la barre de progression par défaut */
+                transition: background-color 0.3s;
+            }
+
+            .progress-bar.low {
+                background-color: #FF0000; /* Rouge si la barre est en dessous de 20% */
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <div class="welcome-text">
+                    Your Analysis Page
+                </div>
+                <div class="current-balance #{loginBean.getUserLoggedIn().calculateRemainingBalance() lt 0 ? 'negative' : ''}">
+                    Current monthly income: #{loginBean.getUserLoggedIn().balance}
+                </div>
+                
+                <div class="current-balance">
+                    Total expenses for this month: #{loginBean.getUserLoggedIn().calculateTotalExpenses()}
+                </div>
+                
+                <div class="current-balance">
+                    Current balance: #{loginBean.getUserLoggedIn().calculateRemainingBalance()}
+                </div>
+                
+                <div class="progress-container">
+                    <div class="#{((loginBean.getUserLoggedIn().calculateRemainingBalance() / loginBean.getUserLoggedIn().balance) * 100) lt 20 ? 'progress-bar low' : 'progress-bar'}" 
+                         style="width: #{(loginBean.getUserLoggedIn().calculateRemainingBalance() / loginBean.getUserLoggedIn().balance) * 100}%">
+                    </div>
+                </div>
+                
+                <div class="category-difference-container">
+                    <h:outputText value="Difference between budget and expenses for each category" styleClass="category-name"/>
+                    <h:dataTable value="#{loginBean.getUserLoggedIn().getBudget().getCategoryAmounts().entrySet()}" var="entry" styleClass="operations-table">
+                        <h:column>
+                            <f:facet name="header">Category</f:facet>
+                            <h:outputText value="#{entry.key.getName()}" styleClass="category-name"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Budget</f:facet>
+                            <h:outputText value="#{entry.value} CHF"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Expenses</f:facet>
+                            <h:outputText value="#{loginBean.getUserLoggedIn().calculateExpensesByCategory()[entry.key.getName()] ne null ? loginBean.getUserLoggedIn().calculateExpensesByCategory()[entry.key.getName()] : '0.0'} CHF"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Difference</f:facet>
+                            <h:outputText value="#{entry.value - (loginBean.getUserLoggedIn().calculateExpensesByCategory()[entry.key.getName()] ne null ? loginBean.getUserLoggedIn().calculateExpensesByCategory()[entry.key.getName()] : 0.0)} CHF"
+                                          styleClass="category-difference #{(entry.value - (loginBean.getUserLoggedIn().calculateExpensesByCategory()[entry.key.getName()] ne null ? loginBean.getUserLoggedIn().calculateExpensesByCategory()[entry.key.getName()] : 0.0)) ge 0 ? 'positive' : 'negative'}"/>
+                        </h:column>
+                    </h:dataTable>
+                </div>          
+                <div class="buttons-container">
+                    <h:commandButton styleClass="command-button" value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>

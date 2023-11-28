@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>My Profile</title>
+        <style>
+            
+             body {
+                font-family: 'Arial', sans-serif;
+                background-color: #001f3f; /* Bleu foncé/marin */
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .panel-grid {
+                width: 600px; /* Largeur fixe pour la grille */
+                margin: 0 auto; /* Centrer la grille dans le conteneur */
+            }
+            
+            .grid-row {
+                display: flex; /* Utiliser flexbox pour un meilleur contrôle du layout */
+                justify-content: space-between; /* Espacer les éléments uniformément */
+                align-items: center; /* Aligner les éléments verticalement */
+                margin-bottom: 10px; /* Espacement entre les lignes */
+            }
+
+            .grid-label {
+                flex: 1; /* Donner aux labels la possibilité de s'étendre */
+                text-align: right; /* Aligner le texte des labels à droite */
+                padding-right: 10px; /* Espacement entre le label et le champ */
+            }
+
+            .grid-value {
+                flex: 2; /* Donner aux champs de saisie plus d'espace pour s'étendre */
+            }
+
+            .grid-button {
+                flex: 1; /* Donner aux boutons la possibilité de s'étendre */
+                padding-top: 8px; /* Aligner le bouton avec le champ de saisie */
+            }
+            
+            .input-field, .command-button {
+                width: 100%; /* Utiliser toute la largeur disponible */
+            }
+            
+            .command-button {
+                text-decoration: none;
+                color: #000;
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: 2px solid #fff;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            /* Autres styles... */
+        </style>
+    </h:head>
+    <h:body>
+        <div class="form-container">
+            <h:form>
+                <div class="panel-grid">
+                    <!-- Titre -->
+                    <div class="grid-row" style="justify-content: center;">
+                        <h:outputText value="Account Information" style="font-weight:bold; font-size:24px;" />
+                    </div>
+                    
+                    <!-- Champs d'information existants... -->
+                    <div class="grid-row">
+                        <h:outputText value="Username:" styleClass="grid-label"/>
+                        <h:outputText value="#{loginBean.getUserLoggedIn().username}" styleClass="grid-value"/>
+                    </div>
+                    
+                    <div class="grid-row">
+                        <h:outputText value="Name:" styleClass="grid-label"/>
+                        <h:outputText value="#{loginBean.getUserLoggedIn().name}" styleClass="grid-value"/>
+                    </div>
+                    
+                    <div class="grid-row">
+                        <h:outputText value="Password" styleClass="grid-label"/>
+                        <h:outputText value="*****" styleClass="grid-value"/>
+                    </div>
+                    <!-- Répéter pour Name, Email, Password... -->
+
+                    <!-- Champs pour nouveau mot de passe et nouveau nom d'utilisateur avec boutons -->
+                    <div class="grid-row">
+                        <h:outputText value="New Password:" styleClass="grid-label"/>
+                        <h:inputSecret styleClass="input-field grid-value" value="#{userBean.newPassword}" />
+                        <h:commandButton styleClass="command-button grid-button" value="Change Password" action="#{userBean.changePassword()}" />
+                    </div>
+                    
+                    <div class="grid-row">
+                        <h:outputText value="New Username:" styleClass="grid-label"/>
+                        <h:inputText styleClass="input-field grid-value" value="#{userBean.newUsername}" />
+                        <h:commandButton styleClass="command-button grid-button" value="Change Username" action="#{userBean.changeUsername()}" />
+                    </div>
+                    
+                    <!-- Bouton pour revenir à la page principale -->
+                    <div class="grid-row" style="justify-content: center;">
+                        <h:commandButton styleClass="command-button" value="Return to Main Page" action="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+                    </div>
+                    
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edit Budget</title>
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                background: linear-gradient(to right, #141e30, #243b55);
+                color: #000;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                overflow-y: auto;
+            }
+
+            .container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 50%;
+                max-width: 600px;
+                background-color: rgba(255, 255, 255, 0.95);
+                border-radius: 10px;
+                padding: 50px;
+                margin-top: 300px;
+                margin-bottom: 300px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            }
+
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #007bff;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .category-name, .category-amount {
+                font-size: 18px;
+                text-align: left;
+                margin-bottom: 15px;
+                color: #0c0c0d;
+                width: 100%;
+            }
+
+            .input-field {
+                text-align: center;
+                height: 20px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                width: 100%;
+            }
+
+            .dropdown-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .dropdown-label {
+                font-size: 18px;
+                text-align: center;
+                margin-bottom: 5px;
+                color: #0c0c0d;
+                width: 100%;
+            }
+
+            .dropdown {
+                width: 100%;
+                text-align: center;
+                font-size: 16px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin-bottom: 10px; /* Added margin */
+            }
+
+            .command-button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 15px 30px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .command-button:hover {
+                background-color: #0056b3;
+            }
+
+            .operations-table {
+                width: 100%;
+                margin-top: 20px;
+                margin-bottom: 20px; /* Added margin */
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                overflow: hidden;
+                max-width: 100%;
+                overflow-x: auto;
+                max-height: 50vh;
+                overflow-y: scroll;
+            }
+
+            .operations-table th, .operations-table td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: center;
+                color: #000;
+            }
+
+            .operations-table th {
+                background-color: #007bff;
+                color: #fff;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+            }
+
+            .no-operations-message {
+                color: #000;
+                margin-top: 20px;
+                text-align: center;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1 class="header">Edit Budget</h1>
+
+                <h:dataTable value="#{loginBean.getUserLoggedIn().getBudget().getCategoryAmounts().entrySet()}" var="entry"
+                             styleClass="operations-table">
+                    <h:column>
+                        <f:facet name="header">Categories</f:facet>
+                        <h:outputText value="#{entry.key.getName()}" styleClass="category-name"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Amount</f:facet>
+                        <h:outputText value="#{entry.value} CHF" styleClass="category-amount"/>
+                    </h:column>
+                </h:dataTable>
+
+                <div class="dropdown-container">
+                    <h:outputLabel value="Select Category:" for="selectedCategory" styleClass="dropdown-label"/>
+                    <h:selectOneMenu id="selectedCategory" value="#{loginBean.getUserLoggedIn().getBudget().selectedCategory}" styleClass="dropdown">
+                        <f:selectItems value="#{loginBean.getUserLoggedIn().getBudget().getAllCategoryNames()}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <h:inputText value="#{loginBean.getUserLoggedIn().getBudget().selectedAmount}" styleClass="input-field" />
+
+                <h:commandButton id="editBudgetButton"
+                                 value="Submit"
+                                 action="#{loginBean.getUserLoggedIn().getBudget().setBudgetForCategoryByName(loginBean.getUserLoggedIn().getBudget().selectedCategory, loginBean.getUserLoggedIn().getBudget().selectedAmount)}"
+                                 styleClass="command-button" />
+
+                <h:commandButton styleClass="command-button" value="Go Back to Main Menu"
+                                 action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
