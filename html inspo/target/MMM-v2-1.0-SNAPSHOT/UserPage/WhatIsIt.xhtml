@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Welcome to MonthlyMoney Manager!</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                background: linear-gradient(to right, #141e30, #243b55);
+                color: #fff;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column; /* Changez la direction du flex pour être en colonne */
+                align-items: center;
+                justify-content: flex-start; /* Alignez le contenu en haut */
+                height: 100vh;
+                overflow: auto; /* Ajoutez un défilement si le contenu est plus long que la fenêtre */
+            }
+            .container {
+                width: 50%;
+                max-width: 600px; /* Vous pouvez ajouter une largeur maximale si nécessaire */
+                background-color: #F5FAFF;
+                border-radius: 10px;
+                padding: 50px;
+                margin-top: 20px; /* Ajoutez une marge en haut pour assurer l'espace */
+                margin-bottom: 50px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+
+            }
+
+            
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #001f3f;
+                font-weight: bold;
+            }
+            .sub-header {
+                font-size: 24px;
+                margin-bottom: 30px;
+                color: #495057;
+            }
+            .section {
+                text-align: left;
+                margin-top: 30px;
+            }
+            .section-header {
+                font-size: 22px;
+                color: #001f3f;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            .section-content {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #001f3f;
+                text-align: justify;
+            }
+            .italic-text {
+                font-style: italic;
+                font-size: 20px;
+                color: #6c757d;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #fff; /* Bleu clair */
+                color: #001f3f;
+                border: none;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+                padding: 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+            .logout-icon {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .top-left-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+            }
+
+            .dropdown {
+                text-align: center;
+            }
+
+            .dropdown button {
+                font-size: 24px;
+                background-color: #fff;
+                color: #001f3f;
+                border: none;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+
+            .dropdown-content {
+                display: block;
+                position: absolute;
+                background-color: #243b55;
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+            .dropdown-content a {
+                color: #fff;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #fff;
+                color: #001f3f;
+            }
+
+            .dropdown:hover .dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+
+            .return-button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 15px 30px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            .return-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1 class="header">Welcome to MonthlyMoney Manager!</h1>
+            <p class="sub-header">Your personal financial assistant for effortless budget management.</p>
+
+            <div class="section">
+                <h2 class="section-header">Getting Started</h2>
+                <p class="section-content">Input your monthly income and expenses to get a clear picture of your financial standing.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Analysis</h2>
+                <p class="section-content">Access detailed graphs and breakdowns to understand your spending habits.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Goals</h2>
+                <p class="section-content">Define and track your financial objectives, staying motivated and on the right path.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Monthly Breakdowns</h2>
+                <p class="section-content">Dive deep into your month-by-month financial habits to make informed decisions.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-header">Customization and Support</h2>
+                <p class="section-content">Tailor the app settings to your preference and access our help and support anytime you need.</p>
+            </div>
+
+            <p class="italic-text">Take control of your finances today with MonthlyMoney Manager!</p>
+
+        </div>
+        <div class="buttons-container">
+            <div class="top-left-menu">
+                <div class="dropdown">
+                    <button>Menu</button>
+                    <div class="dropdown-content">
+                        <h:link value="My MMM" outcome="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+                        <h:link value="Analysis" outcome="/UserPage/Analysis.xhtml?faces-redirect=true" />
+                        <h:link value="Edit Budget" outcome="/UserPage/EditBudget.xhtml?faces-redirect=true" />
+                        <h:link value="Enter Expenses" outcome="/UserPage/EnterExpenses.xhtml?faces-redirect=true" />
+                        <h:link value="My Profile" outcome="/UserPage/MyProfile.xhtml?faces-redirect=true" />
+                        <h:link value="Team" outcome="/UserPage/Team.xhtml?faces-redirect=true" />
+                        <h:link value="Contact" outcome="/UserPage/Contact.xhtml?faces-redirect=true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h:commandLink styleClass="logout-button" action="#{loginBean.userLogsOut()}">
+            <img src="#{request.contextPath}/images/logout.jpeg" alt="Logout" class="logout-icon" />
+        </h:commandLink>
+    </h:body>
+</html>

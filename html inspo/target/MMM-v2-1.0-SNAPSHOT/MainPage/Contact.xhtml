@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Contact</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #001f3f; /* Couleur de fond gris très clair */
+                color: #495057; /* Texte en gris foncé */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .panel-grid {
+                background-color: #ffffff; /* Fond blanc */
+                border-radius: 5px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre légère */
+                padding: 20px;
+                margin: 50px auto; /* Centrer le panneau */
+                max-width: 400px; /* Largeur maximale du panneau */
+            }
+
+            .grid-item-label {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #007bff; /* Bleu Material Design */
+            }
+
+            .grid-item-input {
+                width: 100%;
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+
+            .long-message-input {
+                height: 100px;
+            }
+
+            .send-button {
+                background-color: #007bff; /* Bleu Material Design */
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .send-button:hover {
+                background-color: #0056b3; /* Bleu foncé Material Design */
+            }
+            
+            .back-to-menu-button {
+                background-color: #87CEEB; /* Light Sky Blue */
+                color: #001f3f; /* Dark Navy */
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .back-to-menu-button:hover {
+                background-color: #5F9EA0; /* Cadet Blue */
+                color: #fff; /* White */
+            }
+            .star-rating {
+                unicode-bidi: bidi-override;
+                direction: rtl;
+                text-align: center; /* Center the stars */
+                font-size: 30px;
+                cursor: pointer;
+                margin: 0 auto; /* Additional centering for the container */
+                display: block; /* Use block to allow margin to take effect */
+            }
+            .star-rating > span:hover,
+            .star-rating > span:hover ~ span,
+            .star-rating > span.selected ~ span {
+                color: #FFD700;
+            }
+            .star-rating > input {
+                display: none;
+            }
+
+            /* Style for the message */
+            .rating-message {
+                text-align: center;
+                display: none; /* Hide by default */
+                color: #28a745; /* Green color for success message */
+                margin-top: 20px;
+            }
+        </style>
+        <script type="text/javascript">
+        //<![CDATA[
+            function toggleStarRating(rating) {
+                document.getElementById('star-value').value = rating;
+                // Highlighting stars up to the selected one
+                var stars = document.querySelectorAll('.star-rating > span');
+                stars.forEach(function(star, index) {
+                    star.style.color = index < rating ? '#FFD700' : '#ccc';
+                    star.classList.remove('selected');
+                });
+                for (var i = 0; i < rating; i++) {
+                    stars[i].classList.add('selected');
+                }
+                // Show message
+                var messageDiv = document.getElementById('rating-message');
+                messageDiv.innerHTML = 'Your grade of ' + rating + ' stars has been well received!';
+                messageDiv.style.display = 'block'; // Show the message
+            }
+        //]]>
+        </script>
+        <script type="text/javascript">
+        //<![CDATA[
+            function sendMessage() {
+                //on devrait mettre ici une condition si l'user ne rempli pas tous les champs
+
+
+
+
+                var messageDiv = document.getElementById('message-response');
+                messageDiv.innerHTML = 'Your message has been sent successfully!';
+                messageDiv.style.display = 'block'; // Show the message
+
+
+                return false;
+            }
+        //]]>
+        </script>
+    </h:head>
+    <h:body>
+        <h:form onsubmit="return sendMessage();">
+            <h:panelGrid styleClass="panel-grid" columns="2">
+                <h:outputText styleClass="grid-item-label" value="Email:" />
+                <h:inputText styleClass="grid-item-input" value="#{contactformBean.CFEmail}" required="true" />
+                <h:outputText styleClass="grid-item-label" value="Name:" />
+                <h:inputText styleClass="grid-item-input" value="#{contactformBean.CFName}" required="true" />
+                <h:outputText styleClass="grid-item-label" value="Message:" />
+                <h:inputTextarea styleClass="long-message-input" value="#{contactformBean.CFMessage}" required="true" />
+                <br/>
+                <h:commandButton styleClass="send-button" value="Send" />
+            </h:panelGrid>
+        </h:form>
+        <!-- Message response area -->
+        <div id="message-response" style="display:none; color: green; text-align:center; margin-bottom:20px;"></div>
+        
+        <div class="rate-message">
+            How's your experience going ? Rate us !
+        </div>
+        
+        <h:form>
+            <div class="star-rating">
+                <span onclick="toggleStarRating(5)">&#x2605;</span>
+                <span onclick="toggleStarRating(4)">&#x2605;</span>
+                <span onclick="toggleStarRating(3)">&#x2605;</span>
+                <span onclick="toggleStarRating(2)">&#x2605;</span>
+                <span onclick="toggleStarRating(1)">&#x2605;</span>
+                <input type="hidden" id="star-value" name="star-value" value="0" />
+            </div>
+            <div id="rating-message" class="rating-message"></div>
+
+            <div style="margin-top: 40px;">
+                <h:commandButton styleClass="back-to-menu-button" value="Go Back to Main Menu" action="/MainPage/MainPage.xhtml?faces-redirect=true" />
+            </div>
+        </h:form>
+    </h:body>
+</html>

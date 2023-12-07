@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Enter Expenses</title>
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #F5FAFF; /* Bleu clair */
+            color: #001f3f; /* Bleu foncé */
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 8px;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .header {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #001f3f;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .input-field {
+            text-align: center;
+            font-size: 18px;
+            height: 20px;
+            padding: 10px;
+            border: 1px solid #001f3f;
+            border-radius: 8px;
+            width:96%;
+        }
+
+        .command-button {
+            background-color: #001f3f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .command-button:hover {
+            background-color: #0056b3;
+        }
+        .dropdown-expense {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px; /* Added margin */
+        }
+        .logout-button {
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            font-size: 20px;
+            background-color: #fff; /* Bleu clair */
+            color: #001f3f;
+            border: none;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .logout-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .top-left-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+        }
+
+        .dropdown{
+            text-align: center;
+        }
+
+        .dropdown button {
+            font-size: 24px;
+            background-color: #fff;
+            color: #001f3f;
+            border: none;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .dropdown-content {
+            display: block;
+            position: absolute;
+            background-color: #243b55;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #fff;
+            color: #001f3f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0px);
+        }
+
+        .operations-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: inherit;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .operations-table th, .operations-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            color: #000;
+        }
+
+        .operations-table th {
+            background-color: #001f3f;
+            color: white;
+        }
+
+        .no-operations-message {
+            color: #000;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1 class="header">Enter Expenses</h1>
+
+                <h:outputLabel value="Select Category: " for="selectedCategory" />
+                <h:selectOneMenu id="selectedCategory" value="#{operationBean.selectedCategory}" styleClass="dropdown-expense">
+                    <f:selectItems value="#{operationBean.getCategories()}" var="category" itemLabel="#{category.name}" itemValue="#{category.name}" />
+                </h:selectOneMenu>
+
+
+                <h:outputLabel value="Enter Amount: " for="expenseAmount" />
+                <h:inputText id="expenseAmount" value="#{operationBean.expenseAmount}" styleClass="input-field" />
+
+                <h:commandButton value="Add Operation" action="#{loginBean.getUserLoggedIn().addOperation(operationBean.selectedCategory, operationBean.expenseAmount)}" styleClass="command-button" />
+
+                <!-- Display user's operations -->
+                <h:dataTable value="#{loginBean.getUserLoggedIn().getOperations()}" var="operation" styleClass="operations-table"
+                    rendered="#{not empty loginBean.getUserLoggedIn().getOperations()}">
+                    <h:column>
+                        <f:facet name="header">Category</f:facet>
+                        #{operation.category}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Amount</f:facet>
+                        #{operation.amount}
+                    </h:column>
+                </h:dataTable>
+
+
+                <!-- Message if no operations -->
+                <h:outputText value="No operations available." styleClass="no-operations-message"
+                            rendered="#{empty loginBean.getUserLoggedIn().getOperations()}" />
+
+                <!-- Go Back to Main Menu Button -->
+                <h:commandButton styleClass="command-button" value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+            </div>
+            <div class="buttons-container">
+                <div class="top-left-menu">
+                    <div class="dropdown">
+                        <button>Menu</button>
+                        <div class="dropdown-content">
+                            <h:link value="My MMM" outcome="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+                            <h:link value="Analysis" outcome="/UserPage/Analysis.xhtml?faces-redirect=true" />
+                            <h:link value="Edit Budget" outcome="/UserPage/EditBudget.xhtml?faces-redirect=true" />
+                            <h:link value="My Profile" outcome="/UserPage/MyProfile.xhtml?faces-redirect=true" />
+                            <h:link value="What is it ?" outcome="/UserPage/WhatIsIt.xhtml?faces-redirect=true" />
+                            <h:link value="Team" outcome="/UserPage/Team.xhtml?faces-redirect=true" />
+                            <h:link value="Contact" outcome="/UserPage/Contact.xhtml?faces-redirect=true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h:commandLink styleClass="logout-button" action="#{loginBean.userLogsOut()}">
+                <img src="#{request.contextPath}/images/logout.jpeg" alt="Logout" class="logout-icon" />
+            </h:commandLink>
+        </h:form>
+    </h:body>
+</html>

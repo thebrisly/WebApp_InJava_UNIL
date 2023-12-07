@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>MonthlyMoneyManager</title>
+        <style>
+            
+            @font-face {
+                font-family: 'CustomFont';
+                src: url('../resources/fonts/MADEMountain-Regular.otf') format('opentype');
+                /* Adjust the path as needed if your CSS file is in a different location */
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #001f3f; /* Bleu foncé/marin */
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .welcome-container {
+                margin-top: 50px;
+            }
+
+            
+            .welcome-label {
+                font-family: 'CustomFont', Arial, sans-serif;
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .form-container {
+                margin-top: 100px;
+            }
+
+            .panel-grid {
+                display: inline-block;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: #003366; /* Bleu foncé/marin légèrement plus clair */
+            }
+
+            .link-button {
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #2196F3; /* Bleu Material Design */
+                transition: background-color 0.3s, color 0.3s;
+                display: inline-block;
+                cursor: pointer;
+            }
+
+            .link-button:hover {
+                background-color: #0D47A1; /* Bleu foncé Material Design */
+                
+            }
+
+            .tabs-container {
+                position: fixed; /* Change to fixed positioning */
+                bottom: 20px; /* Position at the bottom of the page */
+                right: 20px; /* Position on the right of the page */
+            }
+
+            .tab {
+                margin-right: 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="tabs-container">
+            <h:link styleClass="link-button" value="Contact" outcome="/MainPage/Contact.xhtml?faces-redirect=true" />
+            <h:link styleClass="link-button" value="What is it ?" outcome="/MainPage/WhatIsIt.xhtml?faces-redirect=true" />
+            <h:link styleClass="link-button" value="Team" outcome="/MainPage/Team.xhtml?faces-redirect=true" />
+        </div>
+
+        <div class="welcome-container">
+            <h:outputLabel styleClass="welcome-label" value="Welcome to My Monthly Money Manager!" />
+        </div>
+        <div class="form-container">
+            <h:form>
+                <h:panelGrid styleClass="panel-grid" columns="1">
+                    <h:link styleClass="link-button" value="Login" outcome="LoginPage.xhtml?faces-redirect=true" />
+                    <h:link styleClass="link-button" value="Create a New User Account" outcome="CreateUser.xhtml?faces-redirect=true" />
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>

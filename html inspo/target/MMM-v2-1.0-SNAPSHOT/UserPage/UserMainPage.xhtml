@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Monthly Money Manager</title>
+        <style>
+            body {
+                font-family: 'Helvetica', sans-serif;
+                background: linear-gradient(to right, #141e30, #243b55);
+                color: #fff;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .header {
+                text-align: center;
+                padding: 20px;
+                font-size: 36px;
+            }
+
+            .form-panel {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: 20px 0;
+            }
+
+            .grid {
+                display: grid;
+                text-align: center;
+                align-items: center;
+                color: #001f3f;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .form-panel {
+                display: grid;
+                flex-direction: row;
+                width: 100%;
+                color: #001f3f;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .rectangle {
+                background-color: #F5FAFF;
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);            
+            }
+            .current-balance,
+            .amount-to-deposit,
+            .last-operations{
+                font-size: 24px;
+                align-self: center;
+            }
+
+            .input-field {
+                font-size: 24px;
+                padding: 5px;
+                border: 1px solid #001f3f;
+                border-radius: 8px;
+                color: #001f3f;
+                width: 150px;
+                text-align: center;
+            }
+
+            .command-button {
+                font-size: 24px;
+                background-color: #243b55;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            .command-button:hover {
+                background-color: #0056b3;
+            }
+            .buttons-container {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                margin-top: 20px;
+                align-items: center;
+
+            }
+            .top-left-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+            }
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+            }
+            .dropdown {
+                text-align: center;
+            }
+
+            .dropdown button {
+                font-size: 24px;
+                background-color: #fff;
+                color: #001f3f;
+                border: none;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+
+            .dropdown-content {
+                display: block;
+                position: absolute;
+                background-color: #243b55;
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-content a {
+                color: #fff;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #fff;
+                color: #001f3f;
+            }
+
+            .dropdown:hover .dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #fff; /* Bleu clair */
+                color: #001f3f;
+                border: none;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+                padding: 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+            .logout-icon {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .text-box {
+                background-color: #fff;
+                padding: 20px;
+                border: solid;
+                border-color: #001f3f;
+                border-radius: 12px;
+                color: #001f3f;
+                margin-top: 20px;
+                text-align: center;
+                max-width: 600px;
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+            }
+            .progress-container {
+                width: 100%;
+                height: 20px;
+                background-color: #eee;
+                border-radius: 8px;
+                margin-top: 20px; /* Ajustez la marge comme souhaité */
+            }
+
+            .progress-bar {
+                height: 100%;
+                border-radius: 8px;
+                background-color: #00FF00; /* Couleur de la barre de progression par défaut */
+                transition: background-color 0.3s;
+            }
+
+            .progress-bar.low {
+                background-color: #FF0000; /* Rouge si la barre est en dessous de 20% */
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1 class="header">My Monthly Money Manager</h1>
+
+                <div class="form-panel">
+                    <!-- Current Monthly Balance Rectangle -->
+                    <div class="rectangle">
+                        <div class="grid">
+                            <h:outputText styleClass="current-balance" value="Current monthly balance : " />
+                            <h:outputText styleClass="current-balance" value="#{loginBean.getUserLoggedIn().calculateRemainingBalance()}" />
+                            <div></div>
+                            <div class="progress-container">
+                                <div class="#{((loginBean.getUserLoggedIn().calculateRemainingBalance() / loginBean.getUserLoggedIn().balance) * 100) lt 20 ? 'progress-bar low' : 'progress-bar'}" 
+                                     style="width: #{(loginBean.getUserLoggedIn().calculateRemainingBalance() / loginBean.getUserLoggedIn().balance) * 100}%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deposit Money Rectangle -->
+                    <div class="rectangle">
+                        <div class="grid">
+                            <h:outputText styleClass="amount-to-deposit" value="Add income: " />
+                            <h:inputText styleClass="input-field" value="#{loginBean.getUserLoggedIn().income}" />
+                        </div>
+                        <div class="center">
+                            <h:commandButton styleClass="command-button" value="Deposit Money" action="#{loginBean.getUserLoggedIn().setBalance(loginBean.getUserLoggedIn().balance + loginBean.getUserLoggedIn().income)}"/>
+                        </div>
+                    </div>
+                    <div class="rectangle">
+                        <div class="grid">
+                            <h:outputText styleClass="current-balance" value="Total monthly expenses: " />
+                            <h:outputText styleClass="current-balance" value="#{loginBean.getUserLoggedIn().calculateTotalExpenses()}" />
+                        </div>
+                    </div>
+                    <!-- Last Operations Rectangle -->
+                    <div class="rectangle">
+                        <h:outputText value="Last 3 Operations:" styleClass="last-operations"/>
+                        <div class="text-box">
+                            <h:dataTable value="#{loginBean.getUserLoggedIn().getLast3Operations()}" var="operation" styleClass="operations-table"
+                                        rendered="#{not empty loginBean.getUserLoggedIn().getOperations()}">
+                                <h:column>
+                                    <f:facet name="header">Category</f:facet>
+                                    #{operation.category}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Amount</f:facet>
+                                    #{operation.amount}
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Reste du contenu de UserMainPage -->
+
+                <div class="buttons-container">
+                    <div class="top-left-menu">
+                        <div class="dropdown">
+                            <button>Menu</button>
+                            <div class="dropdown-content">
+                                <h:link value="Analysis" outcome="/UserPage/Analysis.xhtml?faces-redirect=true" />
+                                <h:link value="Edit budget" outcome="/UserPage/EditBudget.xhtml?faces-redirect=true" />
+                                <h:link value="Enter Expenses" outcome="/UserPage/EnterExpenses.xhtml?faces-redirect=true" />
+                                <h:link value="My Profile" outcome="/UserPage/MyProfile.xhtml?faces-redirect=true" />
+                                <h:link value="What is it ?" outcome="/UserPage/WhatIsIt.xhtml?faces-redirect=true" />
+                                <h:link value="Team" outcome="/UserPage/Team.xhtml?faces-redirect=true" />
+                                <h:link value="Contact" outcome="/UserPage/Contact.xhtml?faces-redirect=true" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-right-logout">
+                    <h:commandLink styleClass="logout-button" action="#{loginBean.userLogsOut()}">
+                        <img src="#{request.contextPath}/images/logout.jpeg" alt="Logout" class="logout-icon" />
+                    </h:commandLink>
+                </div>
+            </div>  
+        </h:form>
+    </h:body>
+</html>

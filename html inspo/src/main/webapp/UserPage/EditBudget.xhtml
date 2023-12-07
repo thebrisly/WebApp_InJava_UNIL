@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edit Budget</title>
+        <style>
+            body {
+                font-family: 'Helvetica', sans-serif;
+                background: linear-gradient(to right, #141e30, #243b55);
+                color: #fff;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #001f3f; /* Bleu foncé */
+                padding: 20px;
+                text-align: center;
+                margin-top: 20px;
+                border-radius: 8px;
+                width: 600px;
+            }
+
+            .buttons-container {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                margin-top: 20px;
+                align-items: center;
+
+            }
+            .command-button {
+                background-color: #243b55;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 15px 30px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .command-button:hover {
+                background-color: #0056b3;
+            }
+
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #001f3f;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .category-name, .category-amount {
+                font-size: 18px;
+                text-align: left;
+                margin-bottom: 15px;
+                color: #001f3f;
+                width: 100%;
+            }
+
+            .input-field {
+                text-align: center;
+                font-size: 18px;
+                height: 20px;
+                padding: 10px;
+                border: 1px solid #001f3f;
+                border-radius: 8px;
+                width:96%;
+            }
+
+            .dropdown-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .dropdown-label {
+                font-size: 18px;
+                text-align: center;
+                margin-bottom: 5px;
+                color: #001f3f;
+                width: 100%;
+            }
+
+            .dropdown-budget {
+                width: 100%;
+                text-align: center;
+                font-size: 16px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin-bottom: 10px; /* Added margin */
+            }
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #fff; /* Bleu clair */
+                color: #001f3f;
+                border: none;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+                padding: 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+            .logout-icon {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .top-left-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+            }
+
+            .dropdown{
+                text-align: center;
+            }
+
+            .dropdown button {
+                font-size: 24px;
+                background-color: #fff;
+                color: #001f3f;
+                border: none;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+
+            .dropdown-content {
+                display: block;
+                position: absolute;
+                background-color: #243b55;
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+            .dropdown-content a {
+                color: #fff;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #fff;
+                color: #001f3f;
+            }
+
+            .dropdown:hover .dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+
+
+            .operations-table {
+                width: 100%;
+                margin-top: 20px;
+                margin-bottom: 20px; /* Added margin */
+                border-collapse: inherit;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                overflow: hidden;
+                max-width: 100%;
+                overflow-x: auto;
+                max-height: 50vh;
+                overflow-y: scroll;
+            }
+
+            .operations-table th, .operations-table td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: center;
+                color: #000;
+            }
+
+            .operations-table th {
+                background-color: #001f3f;
+                color: #fff;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+            }
+
+            .no-operations-message {
+                color: #000;
+                margin-top: 20px;
+                text-align: center;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1 class="header">Edit Budget</h1>
+
+                <h:dataTable value="#{loginBean.getUserLoggedIn().getBudget().getCategoryAmounts().entrySet()}" var="entry"
+                             styleClass="operations-table">
+                    <h:column>
+                        <f:facet name="header">Categories</f:facet>
+                        <h:outputText value="#{entry.key.getName()}" styleClass="category-name"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Amount</f:facet>
+                        <h:outputText value="#{entry.value} CHF" styleClass="category-amount"/>
+                    </h:column>
+                </h:dataTable>
+
+                <div class="dropdown-container">
+                    <h:outputLabel value="Select Category:" for="selectedCategory" styleClass="dropdown-label"/>
+                    <h:selectOneMenu id="selectedCategory" value="#{loginBean.getUserLoggedIn().getBudget().selectedCategory}" styleClass="dropdown-budget">
+                        <f:selectItems value="#{loginBean.getUserLoggedIn().getBudget().getAllCategoryNames()}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <h:inputText value="#{loginBean.getUserLoggedIn().getBudget().selectedAmount}" styleClass="input-field" />
+
+                <h:commandButton id="editBudgetButton"
+                                 value="Submit"
+                                 action="#{loginBean.getUserLoggedIn().getBudget().setBudgetForCategoryByName(loginBean.getUserLoggedIn().getBudget().selectedCategory, loginBean.getUserLoggedIn().getBudget().selectedAmount)}"
+                                 styleClass="command-button" />
+            </div>
+            <div class="buttons-container">
+                <div class="top-left-menu">
+                    <div class="dropdown">
+                        <button>Menu</button>
+                        <div class="dropdown-content">
+                            <h:link value="My MMM" outcome="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+                            <h:link value="Analysis" outcome="/UserPage/Analysis.xhtml?faces-redirect=true" />
+                            <h:link value="Enter Expenses" outcome="/UserPage/EnterExpenses.xhtml?faces-redirect=true" />
+                            <h:link value="My Profile" outcome="/UserPage/MyProfile.xhtml?faces-redirect=true" />
+                            <h:link value="What is it ?" outcome="/UserPage/WhatIsIt.xhtml?faces-redirect=true" />
+                            <h:link value="Team" outcome="/UserPage/Team.xhtml?faces-redirect=true" />
+                            <h:link value="Contact" outcome="/UserPage/Contact.xhtml?faces-redirect=true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h:commandLink styleClass="logout-button" action="#{loginBean.userLogsOut()}">
+                <img src="#{request.contextPath}/images/logout.jpeg" alt="Logout" class="logout-icon" />
+            </h:commandLink>
+        </h:form>
+    </h:body>
+</html>

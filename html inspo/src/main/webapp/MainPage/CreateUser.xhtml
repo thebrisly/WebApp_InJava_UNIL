@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>MonthlyMoneyManager - Create User</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #001f3f; /* Bleu foncé/marin */
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .form-container {
+                margin-top: 50px;
+            }
+
+            .panel-grid {
+                display: inline-block;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: #003366; /* Bleu foncé/marin légèrement plus clair */
+            }
+
+            .form-label {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .input-field {
+                font-size: 16px;
+                padding: 8px;
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 15px;
+            }
+
+            .command-button {
+                text-decoration: none;
+                color: #001f3f;
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: 2px solid #fff;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .command-button:hover {
+                background-color: #fff;
+                color: #001f3f;
+            }
+
+            .error-message {
+                color: red;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="form-container">
+            <h:form id="userForm">
+                <h:panelGrid styleClass="panel-grid" columns="2">
+                    <h:outputText styleClass="form-label" value="Username"/>
+                    <h:inputText styleClass="input-field" value="#{userBean.username}" />
+                    <h:outputText styleClass="form-label" value="First Name"/>
+                    <h:inputText styleClass="input-field" value="#{userBean.name}" />
+                    <h:outputText styleClass="form-label" value="Email"/>
+                    <h:inputText styleClass="input-field" value="#{userBean.email}" />
+                    <h:outputText styleClass="form-label" value="Password"/>
+                    <h:inputSecret styleClass="input-field" value="#{userBean.password}" />
+                    <h:outputText styleClass="form-label" value="Confirm Password"/>
+                    <h:inputSecret styleClass="input-field" value="#{userBean.confirmPassword}" />
+                    <h:message for="userForm:confirmPassword" styleClass="error-message" />
+                    <br/>
+                    <h:commandButton styleClass="command-button" value="Create a User" action="#{userBean.createUser()}" />
+                    <br/>
+                    <h:commandButton styleClass="command-button" value="Go Back to Main Menu" action="/MainPage/MainPage.xhtml?faces-redirect=true" />
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
