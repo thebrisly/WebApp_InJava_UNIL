@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>My MMM</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                background: linear-gradient(to right, #141e30, #243b55);
+                color: #fff;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                height: 100vh;
+                overflow: auto;
+            }
+
+            .container {
+                width: 50%;
+                max-width: 600px;
+                background-color: rgba(255, 255, 255, 0.95);
+                border-radius: 10px;
+                padding: 50px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            }
+
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #007bff;
+                font-weight: bold;
+            }
+
+            .current-balance, .budget, .monthly-operations, .amount-to-deposit, .input-field {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #495057;
+                width: 100%;
+            }
+
+            .input-field {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .command-button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 15px 30px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .command-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1 class="header">My MMM</h1>
+
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText styleClass="current-balance" value="Current balance : "/>
+                    <h:outputText styleClass="current-balance" value="#{loginBean.getUserLoggedIn().balance}" />
+
+                    <h:outputText styleClass="budget" value="Budgets : "/>
+                    <h:outputText styleClass="budget" value="#{loginBean.getUserLoggedIn().budget}" />
+
+                    <h:outputText styleClass="monthly-operations" value="Monthly operations "/>
+                    <h:outputText styleClass="monthly-operations" value="#{loginBean.getUserLoggedIn().operations}" />
+
+                    <h:outputText styleClass="amount-to-deposit" value="Amount to deposit: "/>
+                    <h:inputText styleClass="input-field" value="#{loginBean.getUserLoggedIn().income}" />
+
+                    <h:commandButton styleClass="command-button" value="Deposit Money" action="#{loginBean.getUserLoggedIn().setBalance(loginBean.getUserLoggedIn().balance + loginBean.getUserLoggedIn().income)}"/>
+                    <h:commandButton styleClass="command-button" value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>MonthlyMoneyManager - Login</title>
+        <style>
+            body {
+                font-family: 'Helvetica', sans-serif;
+                background-image: url('#{request.contextPath}/images/background.jpg');
+                background-size: cover; /* Adjust as needed: contain, cover, etc. */
+                background-repeat: repeat;
+                background-position: center center;
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: flex;
+                justify-content: center;
+                height: 100vh;
+
+            }
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #08112d;
+                font-weight: bold;
+            }
+            .form-container {
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #001f3f; /* Bleu foncé */
+                padding: 50px;
+                text-align: center;
+                margin-top: 20px;
+                border-radius: 30px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                width: auto;
+                height: 350px;
+            }
+
+            .panel-grid {
+                display: inline-block;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: #003366; /* Bleu foncé/marin légèrement plus clair */
+            }
+
+            .form-label {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #001f3f; /* Bleu Material Design */
+            }
+
+            .input-field {
+                text-align: left;
+                font-size: 18px;
+                height: 20px;
+                padding: 10px;
+                margin-left: 20px;
+                border: 1px solid #001f3f;
+                border-radius: 8px;
+            }
+
+            .command-button {
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: 1px solid #F5FAFF;
+                border-radius: 20px;
+                background: linear-gradient(to right, #122c5f, #1c4a86); /* Bleu Material Design */
+                transition: background-color 0.3s, color 0.3s;
+                display: inline-block;
+                cursor: pointer;
+            }
+
+            .command-button:hover {
+                background: linear-gradient(to right, #1c4a86, #4cc0e5); /* Bleu foncé Material Design */
+                
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="form-container">
+            <h1 class="header">Log in</h1>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText styleClass="form-label" value="Username"/>
+                    <h:inputText styleClass="input-field" value="#{loginBean.username}" />
+                    <h:outputText styleClass="form-label" value="Password"/>
+                    <h:inputSecret styleClass="input-field" value="#{loginBean.password}" />
+                    <br/>
+                    <h:commandButton styleClass="command-button" value="Login" action="#{loginBean.userLogsIn()}"/>
+                    <br/>
+                    <h:commandButton styleClass="command-button" value="Go Back to Main Menu" action="/MainPage/MainPage.xhtml?faces-redirect=true"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
