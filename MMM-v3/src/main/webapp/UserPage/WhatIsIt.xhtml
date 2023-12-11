@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Welcome to MonthlyMoney Manager!</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: 'Helvetica', sans-serif;
+                background-image: url('#{request.contextPath}/images/background.jpg');
+                background-size: cover; /* Adjust as needed: contain, cover, etc. */
+                background-repeat: repeat;
+                background-position: center center;
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: flex;
+                justify-content: center;
+
+            }
+            .container {
+                width: 100%;
+                max-width: 600px; /* Vous pouvez ajouter une largeur maximale si nécessaire */
+                background-color: #F5FAFF;
+                border-radius: 30px;
+                padding: 50px;
+                margin-top: 20px; /* Ajoutez une marge en haut pour assurer l'espace */
+                margin-bottom: 50px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+
+            }
+
+            
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #08112d;
+                font-weight: bold;
+                text-align: center;
+                padding: 20px;
+            }
+            .sub-header {
+                font-size: 24px;
+                margin-bottom: 30px;
+                color: #495057;
+            }
+            .section {
+                text-align: left;
+                margin-top: 30px;
+            }
+            .section-header {
+                font-size: 22px;
+                color: #08112d;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            .section-content {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #08112d;
+                text-align: justify;
+            }
+            .italic-text {
+                font-style: italic;
+                font-size: 20px;
+                color: #6c757d;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #fff; /* Bleu clair */
+                color: #08112d;
+                border: none;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+                padding: 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+            .top-left-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                border-radius: 30px;
+            }
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+            }
+            .dropdown {
+                text-align: center;
+            }
+
+            .dropdown button {
+                font-size: 24px;
+                background-color: #F5FAFF;
+                font-weight:bold;
+                color: #08112d;
+                border: none;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 30px;
+            }
+
+            .dropdown-content {
+                display: block;
+                position: absolute;
+                background-color: #08112d;
+                min-width: 160px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-content a {
+                color: #fff;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #fff;
+                color: #08112d;
+            }
+
+            .dropdown:hover .dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #08112d;
+                border: none;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: flex; /* Use flexbox */
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                cursor: pointer;
+                border-radius: 30px;
+            }
+            .logout-icon {
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+            }  
+
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1 class="header">Welcome to MonthlyMoney Manager!</h1>
+                <p class="sub-header">Your personal financial assistant for effortless budget management.</p>
+
+                <div class="section">
+                    <h2 class="section-header">Getting Started</h2>
+                    <p class="section-content">Input your monthly income and expenses to get a clear picture of your financial standing.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-header">Analysis</h2>
+                    <p class="section-content">Access detailed graphs and breakdowns to understand your spending habits.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-header">Goals</h2>
+                    <p class="section-content">Define and track your financial objectives, staying motivated and on the right path.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-header">Monthly Breakdowns</h2>
+                    <p class="section-content">Dive deep into your month-by-month financial habits to make informed decisions.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-header">Customization and Support</h2>
+                    <p class="section-content">Tailor the app settings to your preference and access our help and support anytime you need.</p>
+                </div>
+
+                <p class="italic-text">Take control of your finances today with MonthlyMoney Manager!</p>
+
+            </div>
+            <div class="buttons-container">
+                <div class="top-left-menu">
+                    <div class="dropdown">
+                        <button>Menu</button>
+                        <div class="dropdown-content">
+                            <h:link value="My MMM" outcome="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+                            <h:link value="Analysis" outcome="/UserPage/Analysis.xhtml?faces-redirect=true" />
+                            <h:link value="Edit Budget" outcome="/UserPage/EditBudget.xhtml?faces-redirect=true" />
+                            <h:link value="Enter Expenses" outcome="/UserPage/EnterExpenses.xhtml?faces-redirect=true" />
+                            <h:link value="My Profile" outcome="/UserPage/MyProfile.xhtml?faces-redirect=true" />
+                            <h:link value="Team" outcome="/UserPage/Team.xhtml?faces-redirect=true" />
+                            <h:link value="Contact" outcome="/UserPage/Contact.xhtml?faces-redirect=true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h:commandLink styleClass="logout-button" action="#{loginBean.userLogsOut()}">
+                <img src="#{request.contextPath}/images/logout.jpeg" alt="Logout" class="logout-icon" />
+            </h:commandLink>
+        </h:form>
+    </h:body>
+</html>

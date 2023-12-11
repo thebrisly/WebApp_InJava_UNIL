@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Contact</title>
+        <style>
+             body {
+                font-family: 'Helvetica', sans-serif;
+                background-image: url('#{request.contextPath}/images/background.jpg');
+                background-size: cover; /* Adjust as needed: contain, cover, etc. */
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-color:#050318;
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items:center;
+                flex-direction:column;
+                justify-content: center;
+
+            }
+            .header {
+                font-size: 48px;
+                margin-bottom: 40px;
+                color: #08112d;
+                font-weight: bold;
+                text-align: center;
+            }
+
+             .rectangle-container {
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #08112d; /* Bleu foncé */
+                padding: 20px;
+                text-align: center;
+                margin-top: 20px;
+                border-radius: 30px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                width: 700px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .grid-item-label {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #08112d; /* Bleu Material Design */
+            }
+
+            .grid-item-input {
+                text-align: left;
+                font-size: 18px;
+                height: 20px;
+                padding: 10px;
+                margin-left: 20px;
+                border: 1px solid #08112d;
+                border-radius: 8px;
+            }
+
+            .long-message-input {
+                text-align: left;
+                font-size: 18px;
+                height: 100px;
+                padding: 10px;
+                margin-left: 20px;
+                border: 1px solid #08112d;
+
+            }
+
+            .send-button {
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: 1px solid #F5FAFF;
+                border-radius: 20px;
+                background: linear-gradient(to right, #122c5f, #1c4a86); /* Bleu Material Design */
+                transition: background-color 0.3s, color 0.3s;
+                display: inline-block;
+                cursor: pointer;
+            }
+
+            .send-button:hover {
+                background: linear-gradient(to right, #1c4a86, #4cc0e5); /* Bleu foncé Material Design */
+                
+            }
+            .star-rating {
+                unicode-bidi: bidi-override;
+                text-align: center; /* Center the stars */
+                font-size: 30px;
+                cursor: pointer;
+                margin: 0 auto; /* Additional centering for the container */
+                display: block; /* Use block to allow margin to take effect */
+            }
+            
+            .star-rating > span {
+                color: #08112d;
+            }
+            
+            .star-rating > span.selected ~ span {
+                color: #08112d;
+            }   
+                
+            .star-rating > input {
+                display: none;
+            }
+
+            /* Style for the message */
+            .rating-message {
+                text-align: center;
+                display: none; /* Hide by default */
+                color: #28a745; /* Green color for success message */
+                margin-top: 20px;
+            }
+            .top-left-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                border-radius: 30px;
+            }
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+            }
+            .dropdown {
+                text-align: center;
+            }
+
+            .dropdown button {
+                font-size: 24px;
+                background-color: #F5FAFF;
+                font-weight:bold;
+                color: #08112d;
+                border: none;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 30px;
+            }
+
+            .dropdown-content {
+                display: block;
+                position: absolute;
+                background-color: #08112d;
+                min-width: 160px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-content a {
+                color: #fff;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #fff;
+                color: #08112d;
+            }
+
+            .dropdown:hover .dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #08112d;
+                border: none;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: flex; /* Use flexbox */
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                cursor: pointer;
+                border-radius: 30px;
+            }
+            .logout-icon {
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+            }  
+
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+            }
+
+        </style>
+        <script type="text/javascript">
+        //<![CDATA[
+            function toggleStarRating(rating) {
+                document.getElementById('star-value').value = rating;
+                // Highlighting stars up to the selected one
+                var stars = document.querySelectorAll('.star-rating > span');
+                stars.forEach(function(star, index) {
+                    // This line ensures that stars are highlighted from left to right
+                    star.style.color = index < rating ? '#4cc0e5' : '#08112d'; 
+                    star.classList.remove('selected');
+                });
+                for (var i = 0; i < rating; i++) {
+                    // This loop highlights stars from left to right
+                    stars[i].classList.add('selected');
+                }        
+                    // Show message
+                    var messageDiv = document.getElementById('rating-message');
+                    messageDiv.innerHTML = 'Your grade of ' + rating + ' stars has been well received!';
+                    messageDiv.style.display = 'block'; // Show the message
+            }
+
+
+        //]]>
+        </script>
+        <script type="text/javascript">
+        //<![CDATA[
+            function sendMessage() {
+                //on devrait mettre ici une condition si l'user ne rempli pas tous les champs
+
+
+
+
+                var messageDiv = document.getElementById('message-response');
+                messageDiv.innerHTML = 'Your message has been sent successfully!';
+                messageDiv.style.display = 'block'; // Show the message
+
+
+                return false;
+            }
+        //]]>
+        </script>
+    </h:head>
+    <h:body>
+        <h:form onsubmit="return sendMessage();">
+            <div class="rectangle-container">
+                <h1 class="header">Contact</h1>
+                <h:panelGrid  columns="2">
+                    <h:outputText styleClass="grid-item-label" value="Email:" />
+                    <h:inputText styleClass="grid-item-input" value="#{contactformBean.CFEmail}" required="true" />
+                    <h:outputText styleClass="grid-item-label" value="Name:" />
+                    <h:inputText styleClass="grid-item-input" value="#{contactformBean.CFName}" required="true" />
+                    <h:outputText styleClass="grid-item-label" value="Message:" />
+                    <h:inputTextarea styleClass="long-message-input" value="#{contactformBean.CFMessage}" required="true" />
+                    <br/>
+                    <h:commandButton styleClass="send-button" value="Send" />
+                </h:panelGrid>
+                <div id="message-response" style="display:none; color: green; text-align:center;margin-top: 20px; margin-bottom:20px;"></div>
+            </div>
+        </h:form>
+        <!-- Message response area -->
+
+        <div class="rectangle-container">
+            <div class="rate-message">
+                How's your experience going ? Rate us !
+            </div>
+
+            <h:form>
+                <div class="star-rating" style="direction: ltr;">
+                    <span onclick="toggleStarRating(1)">&#x2605;</span>
+                    <span onclick="toggleStarRating(2)">&#x2605;</span>
+                    <span onclick="toggleStarRating(3)">&#x2605;</span>
+                    <span onclick="toggleStarRating(4)">&#x2605;</span>
+                    <span onclick="toggleStarRating(5)">&#x2605;</span>
+                    <input type="hidden" id="star-value" name="star-value" value="0" />
+                </div>
+                <div id="rating-message" class="rating-message"></div>
+                <h:commandButton styleClass="send-button" value="Go Back to Main Menu" action="/MainPage/MainPage.xhtml?faces-redirect=true" />
+            </h:form>    
+
+        </div>    
+    </h:body>
+</html>
