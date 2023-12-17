@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Meet the Team</title>
+        <style>
+             body {
+                font-family: 'Helvetica', sans-serif;
+                background-image: url('#{request.contextPath}/images/background.jpg');
+                background-size: cover; /* Adjust as needed: contain, cover, etc. */
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-color:#050318;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            .team-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+
+            .team-member {
+                position: relative;
+                width: 360px;
+                height: 360px;
+                margin-bottom: 30px;
+                border-radius: 10px; /* Coins arrondis */
+                overflow: hidden; /* Masquer tout contenu dépassant de la boîte */
+            }
+
+            .team-member img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px 10px 0 0;
+                transition: filter 0.3s; /* Ajout de la transition pour le flou */
+            }
+
+            .team-member:hover img {
+                filter: blur(5px) brightness(0.7); /* Ajout du flou et du noir au survol */
+            }
+
+            .team-member-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 20px;
+                text-align: left;
+                color: #fff;
+                opacity: 0;
+                transition: opacity 0.3s;
+                background: rgba(0, 0, 0, 0.7); /* Assombrir le fond */
+                max-width: 95%;
+            }
+
+            .team-member:hover .team-member-content {
+                opacity: 1; /* Afficher le texte au survol */
+                color: #fff; /* Changer la couleur du texte en blanc au survol */
+            }
+
+
+            .team-member-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #F5FAFF; /* Bleu Material Design */
+            }
+
+            .team-member-role {
+                font-style: italic;
+                margin-bottom: 10px;
+                color: #495057; /* Texte en gris foncé */
+            }
+
+            .team-member-description {
+                color: #495057; /* Texte en gris foncé */
+            }
+
+            .top-left-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                border-radius: 30px;
+            }
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+            }
+            .dropdown {
+                text-align: center;
+            }
+
+            .dropdown button {
+                font-size: 24px;
+                background-color: #F5FAFF;
+                font-weight:bold;
+                color: #08112d;
+                border: none;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 30px;
+            }
+
+            .dropdown-content {
+                display: block;
+                position: absolute;
+                background-color: #08112d;
+                min-width: 160px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                z-index: 1;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-content a {
+                color: #fff;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #fff;
+                color: #001f3f;
+            }
+
+            .dropdown:hover .dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+
+            .logout-button {
+                position: fixed; 
+                top: 20px; 
+                right: 20px; 
+                font-size: 20px;
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #08112d;
+                border: none;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: flex; /* Use flexbox */
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                cursor: pointer;
+                border-radius: 30px;
+            }
+            .logout-icon {
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+            }  
+
+            .top-right-logout {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); 
+            }
+
+            
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="team-container">
+                <!-- Laura Fabbiano -->
+                <div class="team-member">
+                    <img src="#{request.contextPath}/images/laura.jpg" alt="User Picture"/>
+                    <div class="team-member-content">
+                        <div class="team-member-title">Laura Fabbiano</div>
+                        <div class="team-member-role">Developer</div>
+                        <div class="team-member-description">
+                            Laura is the coding genius behind the seamless functionality of MonthlyMoney Manager.
+                            With her expertise in software development, she ensures that the platform is user-friendly,
+                            efficient, and bug-free.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laurent Sierro -->
+                <div class="team-member">
+                    <img src="#{request.contextPath}/images/laurent.jpg" alt="Laurent Sierro" />
+                    <div class="team-member-content">
+                        <div class="team-member-title">Laurent Sierro</div>
+                        <div class="team-member-role">Founder</div>
+                        <div class="team-member-description">
+                            The visionary behind MonthlyMoney Manager, Laurent identified the need for a simple yet
+                            effective budgeting tool and took the initiative to bring this idea to life. His leadership
+                            and passion drive the team forward.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Melvin Petracca -->
+                <div class="team-member">
+                    <img src="#{request.contextPath}/images/melvin.jpg" alt="Melvin Petracca" />
+                    <div class="team-member-content">
+                        <div class="team-member-title">Melvin Petracca</div>
+                        <div class="team-member-role">CTO</div>
+                        <div class="team-member-description">
+                            Overseeing the technical aspects of MonthlyMoney Manager, Melvin ensures that the platform
+                            is built on a robust and scalable architecture. His technical insights have been instrumental
+                            in shaping the app's success.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tigran Grishkian -->
+                <div class="team-member">
+                    <img src="#{request.contextPath}/images/tigran.jpg" alt="Tigran Grishkian" />
+                    <div class="team-member-content">
+                        <div class="team-member-title">Tigran Grishkian</div>
+                        <div class="team-member-role">CFO</div>
+                        <div class="team-member-description">
+                            With a keen eye for numbers, Tigran manages the financial health of MonthlyMoney Manager.
+                            His expertise ensures that the company remains financially strong while delivering top-notch
+                            services to its users.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Return Button -->
+            <div class="buttons-container">
+                <div class="top-left-menu">
+                    <div class="dropdown">
+                        <button>Menu</button>
+                        <div class="dropdown-content">
+                            <h:link value="My MMM" outcome="/UserPage/UserMainPage.xhtml?faces-redirect=true" />
+                            <h:link value="Analysis" outcome="/UserPage/Analysis.xhtml?faces-redirect=true" />
+                            <h:link value="Edit Budget" outcome="/UserPage/EditBudget.xhtml?faces-redirect=true" />
+                            <h:link value="Enter Expenses" outcome="/UserPage/EnterExpenses.xhtml?faces-redirect=true" />
+                            <h:link value="My Profile" outcome="/UserPage/MyProfile.xhtml?faces-redirect=true" />
+                            <h:link value="Team" outcome="/UserPage/Team.xhtml?faces-redirect=true" />
+                            <h:link value="Contact" outcome="/UserPage/Contact.xhtml?faces-redirect=true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h:commandLink styleClass="logout-button" action="#{loginBean.userLogsOut()}">
+                <img src="#{request.contextPath}/images/logout.jpeg" alt="Logout" class="logout-icon" />
+            </h:commandLink>
+        </h:form>
+    </h:body>
+</html>

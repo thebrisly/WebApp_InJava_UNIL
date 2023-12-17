@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>MonthlyMoneyManager</title>
+        <style>
+
+
+            body {
+                font-family: 'Helvetica', sans-serif;
+                background-image: url('#{request.contextPath}/images/background.jpg');
+                background-size: cover; /* Adjust as needed: contain, cover, etc. */
+                background-repeat: repeat;
+                background-position: center center;
+                color: #fff; /* Texte en blanc */
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: flex;
+                justify-content: center;
+                height: 100vh;
+            }
+            .header {
+                font-size: 48px;
+                margin-bottom: 20px;
+                color: #08112d;
+                font-weight: bold;
+                text-align: center;
+                padding: 20px;
+            }
+            .subtitle {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #212942;
+                text-align: justify;
+                margin-top: 40px;
+                font-weight: bold;
+                
+            }
+
+            .form-container {
+                background-color: #F5FAFF; /* Bleu clair */
+                color: #001f3f; /* Bleu foncé */
+                padding: 50px;
+                text-align: center;
+                margin-top: 20px;
+                border-radius: 30px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+                width: 600px;
+            }
+
+            .link-button {
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                border: 1px solid #F5FAFF;
+                border-radius: 20px;
+                background: linear-gradient(to right, #122c5f, #1c4a86); /* Bleu Material Design */
+                transition: background-color 0.3s, color 0.3s;
+                display: inline-block;
+                cursor: pointer;
+            }
+
+            .link-button:hover {
+                background: linear-gradient(to right, #1c4a86, #4cc0e5); /* Bleu foncé Material Design */
+                
+            }
+
+            .tabs-container {
+                position: fixed; /* Change to fixed positioning */
+                bottom: 20px; /* Position at the bottom of the page */
+                right: 20px; /* Position on the right of the page */
+            }
+
+            .tab {
+                margin-right: 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="form-container">
+                <h1 class="header">
+                    Monthly Money Manager
+                </h1>
+                <p class="subtitle">"Monthly Money Manager" is a streamlined web app for effortless expense and income tracking. Users categorize expenses, and the app provides a detailed analysis page summarizing financial activities. Empower yourself with insightful financial management for informed decision-making and goal attainment.</p>
+                
+    
+                <h:link styleClass="link-button" value="Login" outcome="LoginPage.xhtml?faces-redirect=true" />
+                <br/>
+                <h:link styleClass="link-button" value="Create a New User Account" outcome="CreateUser.xhtml?faces-redirect=true" />
+            </div>
+            <div class="tabs-container">
+                <h:link styleClass="link-button" value="Contact" outcome="/MainPage/Contact.xhtml?faces-redirect=true" />
+                <h:link styleClass="link-button" value="What is it ?" outcome="/MainPage/WhatIsIt.xhtml?faces-redirect=true" />
+                <h:link styleClass="link-button" value="Team" outcome="/MainPage/Team.xhtml?faces-redirect=true" />
+            </div>
+        </h:form>
+    </h:body>
+</html>
