@@ -1,29 +1,19 @@
-public class LeapYear {
+import java.util.Scanner;
 
-    public static void main(String[] args) {
-        int year = 2024; // Remplacez cela par l'année que vous souhaitez tester
-        boolean isLeap = isLeapYear(year);
-
-        if (isLeap) {
-            System.out.println(year + " est une année bissextile.");
-        } else {
-            System.out.println(year + " n'est pas une année bissextile.");
-        }
+public class LeapYear 
+{
+    public static boolean isLeap(int year) {
+        if (year % 400 == 0) return true;
+        if (year % 100 == 0) return false;
+        if (year % 4 == 0) return true;
+        return false;
     }
-
-    public static boolean isLeapYear(int year) {
-        boolean isLeap;
-
-        if (year % 400 == 0) {
-            isLeap = true;
-        } else if (year % 100 == 0) {
-            isLeap = false;
-        } else if (year % 4 == 0) {
-            isLeap = true;
-        } else {
-            isLeap = false;
-        }
-
-        return isLeap;
-    }
+    
+    public static void main(String[] args) 
+    {
+        System.out.print("Give us a year: ");
+        Scanner scanner = new Scanner(System.in);
+        int year = scanner.nextInt();
+        System.out.println("isLeap(" + year + ") = " + isLeap(year));
+ }
 }

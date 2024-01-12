@@ -14,6 +14,9 @@ public class TestsExam {
         explicit_implicit_typing();
         explicit_types_with_cast();
         constant_variables();
+        boolean_understanding();
+        command_line_args(args);
+        errors_handling();
     }
 
 
@@ -94,6 +97,72 @@ public class TestsExam {
         //constant_variable = 1;
     }
 
+
+
+    public static void boolean_understanding() {
+
+        System.out.println(PURPLE + "\n TEST 4 - "  + RESET + "Understanding the boolean variables \n");
+
+
+        // Change the following values, compile, run & see which result you obtain :)
+        boolean a = false;
+        boolean b = true;
+
+        if (a && b)
+            System.out.println("&& : If this line appears, that means that the variable 'a' & 'b' are BOTH true !");
+        if (a || b)
+            System.out.println("|| : If this line appears, that means that between the variabls 'a' & 'b' it exists AT LEAST ONE variable that is true ! ");
+        if (a != b)
+            System.out.println("!= : If this line appears, that means that the variable 'a' & 'b' have not the same values");
+
+    }
+
+
+
+    public static void command_line_args(String[] args){
+
+        System.out.println(PURPLE + "\n TEST 5 - "  + RESET + "Understanding command line arguments \n");
+
+        if (args.length == 0)
+            System.out.println("0 arguments have been given :/ ");
+        else if (args.length == 1)
+            System.out.println("1 argument has been given ! It's : " + args[0]);
+        else
+            System.out.println("A lot of arguments have been given !");
+    }
+
+    
+    /* --------------- TEST TO UNDERSTAND ERRORS HANDLING WITH CATCH, TRY & THROW --------------- */
+    public static void errors_handling() {
+        System.out.println(PURPLE + "\n TEST 6 - "  + RESET + "Errors handling \n");
+
+        int balance = 300;
+
+        try 
+        {
+            // Attempt to withdraw an amount greater than the balance
+            withdrawMoney(balance, 400);
+        } 
+
+        catch (RuntimeException e) 
+        {
+            System.out.println("Error: " + e.getMessage());
+        } 
+        
+        finally { System.out.println("This message will be added at the end"); }
+
+    }
+
+    private static void withdrawMoney(int currentBalance, int withdrawalAmount) {
+        if (withdrawalAmount > currentBalance) {
+            throw new RuntimeException("Insufficient funds for withdrawal.");
+        }
+
+        // Perform the withdrawal if all conditions are met
+        currentBalance -= withdrawalAmount;
+        System.out.println("Withdrawal of " + withdrawalAmount + " successful. New balance: " + currentBalance);
+    }
+    
 
 
 }
