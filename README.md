@@ -5,6 +5,8 @@ In this repository, I am excited to showcase a Java web application that I devel
 ## Project Overview
 The Java web application is designed to offer budget management capabilities to users. It allows individuals to input their budget data, which then generates an analysis of their portfolio.
 
+<img width="500" alt="Capture d’écran 2024-03-28 à 08 51 55" src="https://github.com/thebrisly/WebApp_InJava_UNIL/assets/84352348/f0b8a860-e581-41d4-8a5c-08a6d35cca52">
+
 ### Key Features
 
 - User Authentication: The application includes a user authentication system to ensure secure access to budget management functionalities.
@@ -25,6 +27,3 @@ The Java web application is designed to offer budget management capabilities to 
 Creating this Java web application was an enriching experience, allowing me to apply my Java programming skills and understanding of web development concepts. The project demonstrates my proficiency in building robust, database-driven web applications using Java technologies.
 
 Thank you for exploring my repository. If you have any questions or feedback regarding the project, feel free to reach out!
-
-
-<img width="400" alt="Capture d’écran 2024-03-28 à 08 51 55" src="https://github.com/thebrisly/WebApp_InJava_UNIL/assets/84352348/f0b8a860-e581-41d4-8a5c-08a6d35cca52">
